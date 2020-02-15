@@ -61,7 +61,7 @@ export class Dashboard extends Component {
               max={100}
               onChange={this.props.changeVolume}
             />
-            <siv>{this.props.volume}</siv>
+            <div>{this.props.volume}</div>
           </CardContent>
         </Card>
 
