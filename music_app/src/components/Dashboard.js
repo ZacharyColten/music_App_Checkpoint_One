@@ -7,12 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-
-
-
-
 export class Dashboard extends Component {
-
   render() {
     var style = {
       "display": "flex", "flex-direction": "row", "position": "absolute",
@@ -20,19 +15,20 @@ export class Dashboard extends Component {
     };
 
     return (
-
       <div style={style}>
-
-
         <Card style={{ "margin": "0" }}>
           <CardContent style={{
             "display": "flex",
             "align-items": "center",
             "justify-content": "center", "flex-direction": "column"
           }}>
-            <Typography>
-              Toggle Online Status
-              <br></br><br></br>
+            <Typography style={{
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center"
+            }}>
+              Online Status
+              <br></br>
             </Typography>
             <Switch
               checked={this.props.checked}
@@ -42,8 +38,6 @@ export class Dashboard extends Component {
             />
           </CardContent>
         </Card>
-
-
 
         <Card style={{ "margin": "0" }}>
           <CardContent>
@@ -59,13 +53,16 @@ export class Dashboard extends Component {
               step={10}
               min={0}
               max={100}
+              // onChange={this.props.changeVolume}
               onChange={this.props.changeVolume}
             />
-            <div>{this.props.volume}</div>
+            <div style={{
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center"
+            }}>{this.props.volume}</div>
           </CardContent>
         </Card>
-
-
 
         <Card style={{ "margin": "0" }}>
           <CardContent>
@@ -76,6 +73,7 @@ export class Dashboard extends Component {
             }}>
               Quality
             </Typography>
+            <br></br>
             <FormControl >
               <Select
                 defaultValue={this.props.quality}
@@ -89,13 +87,7 @@ export class Dashboard extends Component {
           </CardContent>
         </Card>
       </div>
-
-
-
-
-
     )
-
   }
 }
 export default Dashboard

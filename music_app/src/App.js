@@ -3,14 +3,15 @@ import { AppBar, Toolbar, Typography, Snackbar } from '@material-ui/core';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
-
 class App extends Component {
   state = {
     loggedIn: false,
     online: true,
-    notification: '',
+    notification1: '',
+    notification2: '',
+    notification3: '',
     volume: 50,
-    quality: 3
+    quality: 2,
   }
 
   login = (e) => {
@@ -22,29 +23,35 @@ class App extends Component {
     let online = !this.state.online;
     this.setState({
       online,
-      notification: online ? '' : 'Your application is offline. You wont be able to share or stream music to other devices.'
+      notification1: online ? '' : 'Your application is offline. You wont be able to share or stream music to other devices.'
     })
   }
 
   changeVolume = (e, volume) => {
     this.setState({
       volume: volume,
-      notification: volume < 80 ? '' : 'Listening to music at a high volume could cause long-term hearing loss.'
+      notification2: volume < 80 ? '' : 'Listening to music at a high volume could cause long-term hearing loss.'
     })
   }
 
-  handleClose = () => {
-    this.setState({notification: '' })
-  }
-
-  changeQuality = (e, quality) => { 
+  changeQuality = (e) => {
     this.setState({
-      notification: quality !== 1 ? '' : 'Music quality is degraded. Increase quality if your connection allows it.'
+      quality: e.target.value,
+      notification3: e.target.value !== 1 ? '' : 'Music quality is degraded. Increase quality if your connection allows it.'
     })
+  }
+
+  handleClose1 = () => {
+    this.setState({ notification1: '' })
+  }
+  handleClose2 = () => {
+    this.setState({ notification2: '' })
+  }
+  handleClose3 = () => {
+    this.setState({ notification3: '' })
   }
 
   render = () => {
-
     return (
       <div>
         <AppBar position="static">
@@ -63,11 +70,11 @@ class App extends Component {
             changeQuality={this.changeQuality}
             quality={this.state.quality}
           /> : <Login onSubmit={this.login} />}
-        <Snackbar open={!!this.state.notification} onClose={this.handleClose} message={this.state.notification} />
+        <Snackbar open={!!this.state.notification1} onClose={this.handleClose1} message={this.state.notification1} />
+        <Snackbar open={!!this.state.notification2} onClose={this.handleClose2} message={this.state.notification2} />
+        <Snackbar open={!!this.state.notification3} onClose={this.handleClose3} message={this.state.notification3} />
       </div>
     );
   }
-
 }
-
 export default App;
