@@ -78,8 +78,6 @@ export class Dashboard extends Component {
             </Typography>
             <FormControl >
               <Select
-                labelId="demo-simple-select-placeholder-label-label"
-                id="demo-simple-select-placeholder-label"
                 defaultValue={this.props.quality}
                 onChange={this.props.changeQuality}
               >

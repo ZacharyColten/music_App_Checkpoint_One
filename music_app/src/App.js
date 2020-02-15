@@ -27,6 +27,7 @@ class App extends Component {
   }
 
   changeVolume = (e, volume) => {
+    console.log(this.state.volume)
     this.setState({
       volume: volume,
       notification: volume < 80 ? '' : 'Listening to music at a high volume could cause long-term hearing loss.'
@@ -38,9 +39,9 @@ class App extends Component {
   }
 
   changeQuality = (quality) => { 
+    console.log(this.state.quality)
     this.setState({
-      quality: quality,
-      notification: quality > 1 ? '' : 'Music quality is degraded. Increase quality if your connection allows it.'
+      notification: quality != 1 ? '' : 'Music quality is degraded. Increase quality if your connection allows it.'
     })
   }
 
